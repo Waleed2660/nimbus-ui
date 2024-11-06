@@ -2,30 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .sidebar-icon {
-    @apply relative flex items-center justify-center h-20 w-20 mt-2 mb-2 mx-auto shadow-lg 
-        bg-secondary text-white 
-        hover:bg-secondary hover:text-slate-400
-        rounded-3xl hover:rounded-xl
-        transition-all;
-  }
-
-  .sidebar-button {
-    @apply relative flex items-center h-5 w-60 mt-2 mb-2 mx-auto 
-        bg-primary text-black 
-        hover:bg-secondary
-        rounded-3xl hover:rounded-xl
-        transition-all;
-  }
-
-  .sidebar-tooltip{
-    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-secondary text-xs font-bold
-          transition-all duration-100 scale-0 origin-left
-  }
-
-  .content-container {
-    @apply flex flex-col m-0 h-full w-full overflow-hidden
-          bg-primary;
-  }
-}
+@layer components {}

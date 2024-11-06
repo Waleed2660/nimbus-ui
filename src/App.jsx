@@ -7,7 +7,7 @@ function App() {
     <div className="flex">
       <NavBar />
       {/* <Container /> */}
-      {/* <Sidebar /> */}
+      <Sidebar  />
     </div>
   );
 }
