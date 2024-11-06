@@ -2,24 +2,26 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { ImFolderOpen } from "react-icons/im";
 // import nimbusLogo from '../../resources/nimbus_logo.png';
 
+const iconSize = 18;
+
 const Sidebar = () => {
   return (
-    <div className="fixed top-0 left-0 h-screen w-40 m-0 flex flex-col
-                    bg-primary text-white shadow-lg z-10">
+    <div className="fixed top-0 left-0 h-screen w-60 m-0 flex flex-col
+                    bg-primary text-white shadow-lg">
         
-        <SideBarIcon icon={<FaCloudUploadAlt size={50} />} />
+        <SideBarIcon icon={<FaCloudUploadAlt size={iconSize} />} text={"Upload file"} />
         <Divider />
-        <SideBarIcon icon={<ImFolderOpen size={50}/>} />
+        <SideBarIcon icon={<ImFolderOpen size={iconSize}/>} text={"My files"} /> 
     </div>
   );
 };
 
-const SideBarIcon = ({ icon }) => (
+const SideBarIcon = ({ icon, text }) => (
   <div className="sidebar-icon group">
     {icon}
-    {/* <span class="sidebar-tooltip group-hover:scale-100">
+    <span class="sidebar-tooltip group-hover:scale-100">
       {text}
-    </span> */}
+    </span>
   </div>
 );
 

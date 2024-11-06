@@ -1,9 +1,11 @@
-import Sidebar from './components/sidebar'; // Import Sidebar component
+import Sidebar from './components/sidebar';
+import Container from './components/container'; 
 
 function App() {
   return (
-    <div className="flex">
+    <div className="flex bg-primary">
       <Sidebar />
+      <Container />
     </div>
   );
 }
