@@ -1,0 +1,31 @@
+name: Build React Project
+
+# Trigger the workflow on push or pull request events on all branches
+on:
+  push:
+    branches: ['*']  # Triggers on all branches
+  pull_request:
+    branches: ['*']  # Runs on all branches for PRs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run the build command
+      - name: Build the project
+        run: npm run build
