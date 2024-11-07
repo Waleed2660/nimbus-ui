@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiUpload } from "react-icons/fi";
+// import { FiUpload } from "react-icons/fi";
 
 function FileUploadPopup({ onClose, onUpload }) {
     const [file, setFile] = useState(null);
@@ -58,3 +58,4 @@ function FileUploadPopup({ onClose, onUpload }) {
     );
 }
 
+export default FileUploadPopup;

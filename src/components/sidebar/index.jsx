@@ -1,46 +1,47 @@
 import { ImFolderOpen } from "react-icons/im";
+import { ImHistory } from "react-icons/im";
+import { ImBin } from "react-icons/im";
+import { BsGearWideConnected } from "react-icons/bs";
+import { CiLogout } from "react-icons/ci";
 
 const Sidebar = () => {
   return (
-    <div className="fixed top-20 left-0 h-screen w-41 m-0 flex flex-col
+    <div className="fixed top-0 left-0 h-screen pr-5 pl-3 pt-24 flex flex-col
                     bg-primary text-black">
-        <Divider />
-        {/* <SideBarIcon icon={<ImFolderOpen size={iconSize}/>} text={"My files"} />  */}
+        
         <SidebarItem icon={ImFolderOpen} text={"My files"} />
-        <SidebarButton text={"My files"} />
-        <SidebarButton text={"Upload History"} />
-        <SidebarButton text={"Recycle Bin"} />
-
-        <div className="fixed bottom-0">
+        <SidebarItem icon={ImHistory} text={"Upload History"} />
+        <SidebarItem icon={ImBin} text={"Recycle Bin"} />
+        <div className="flex-grow"></div>
+        <div>
           <Divider />
-          <SidebarButton text={"Settings"} />
-          <SidebarButton text={"Logout"} />
-          
+          <SidebarItem icon={BsGearWideConnected} text={"Settings"} />
+          <SidebarItem icon={CiLogout} text={"Logout"} />
         </div>
     </div>
   );
 };
 
 const SidebarItem = ({ icon, text }) => (
-  <div className="flex items-center space-x-2">
+  <div className="group flex items-center justify-start px-4 py-2 text-black 
+                    hover:bg-secondary rounded-3xl hover:rounded-xl transition-all">
     <SideBarIcon icon={icon} />
     <SidebarButton text={text} />
   </div>
 );
 
-const SideBarIcon = ({ icon: Icon, size = 10 }) => (
-  <div className="sidebar-icon group flex items-center">
+const SideBarIcon = ({ icon: Icon, size = 20 }) => (
+  <div className="sidebar-icon group-hover:text-blue-400">
     <Icon size={size} />
   </div>
 );
 
 const SidebarButton = ({ text }) => (
-  <button className="sidebar-button px-5 py-5 relative flex items-center h-5 w-60 mt-2 mb-2 mx-auto 
-                  bg-primary text-black hover:bg-secondary rounded-3xl hover:rounded-xl transition-all">
+  <button className="sidebar-button pl-4">
     {text}
   </button>
 );
 
-const Divider = () => <hr className="sidebar-hr shadow-lg" />;
+const Divider = () => <hr className="sidebar-hr shadow-zinc-500" />;
 
 export default Sidebar;
