@@ -27,7 +27,7 @@ const NavbarHeader = () => (
 
 function GitHubButton() {  
     const handleGitHubClick = () => {
-        window.location.href = 'https://github.com';
+        window.location.href = 'https://github.com/Waleed2660/nimbus-ui';
     };
 
     return (
