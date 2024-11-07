@@ -6,24 +6,24 @@ import { CiLogout } from "react-icons/ci";
 
 const Sidebar = () => {
   return (
-    <div className="fixed top-0 left-0 h-screen pr-5 pl-3 pt-24 flex flex-col
-                    bg-primary text-black">
+    <div className="fixed top-0 left-0 h-screen pr-5 pl-3 pt-24 pb-2 flex flex-col
+                    bg-sideBar text-white space-y-2">
         
         <SidebarItem icon={ImFolderOpen} text={"My files"} />
         <SidebarItem icon={ImHistory} text={"Upload History"} />
         <SidebarItem icon={ImBin} text={"Recycle Bin"} />
         <div className="flex-grow"></div>
-        <div>
+        {/* <div> */}
           <Divider />
           <SidebarItem icon={BsGearWideConnected} text={"Settings"} />
           <SidebarItem icon={CiLogout} text={"Logout"} />
-        </div>
+        {/* </div> */}
     </div>
   );
 };
 
 const SidebarItem = ({ icon, text }) => (
-  <div className="group flex items-center justify-start px-4 py-2 text-black 
+  <div className="group flex items-center justify-start px-4 py-2 
                     hover:bg-secondary rounded-3xl hover:rounded-xl transition-all">
     <SideBarIcon icon={icon} />
     <SidebarButton text={text} />
@@ -42,6 +42,6 @@ const SidebarButton = ({ text }) => (
   </button>
 );
 
-const Divider = () => <hr className="sidebar-hr shadow-zinc-500" />;
+const Divider = () => <hr className="sidebar-hr shadow-zinc-500 pb-2" />;
 
 export default Sidebar;

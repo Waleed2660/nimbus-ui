@@ -4,7 +4,7 @@ import NavBar from './components/navBar';
 
 function App() {
   return (
-    <div className="flex">
+    <div className="flex bg-secondary">
       <NavBar />
       {/* <Container /> */}
       <Sidebar  />

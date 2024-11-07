@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+
 
 import nimbusLogo from '../../resources/nimbus_logo.png';
 
 const NavBar = () => {
     return (
-        <nav className="fixed flex items-center justify-between w-full h-13 bg-primary text-black shadow-lg z-10">
-            <SidebarHeader />
-            <div className="navbar-container justify-end mx-auto px-4 flex">
-            <UploadButton />
-                
+        <nav className="fixed flex items-center w-full h-13 bg-navBar 
+                        text-white shadow-lg z-10">
+            <NavbarHeader />
+
+            <div className="justify-end flex ml-auto pr-2 space-x-2">
+                <UploadButton />
+                <GitHubButton />
             </div>
+
         </nav>
     );
 };
 
-const SidebarHeader = () => (
+const NavbarHeader = () => (
     <div className="flex items-center rounded-lg">
       <img src={nimbusLogo} alt="Nimbus Logo" className="h-20 w-20" />
       <h2 className="text-2xl font-bold">Nimbus</h2>
@@ -94,10 +99,10 @@ function UploadButton() {
         <div>
             {/* Upload Button */}
             <button onClick={handleShowPopup} 
-                    className="flex items-center justify-end px-4 py-2 bg-gray-400 text-white 
-                    hover:bg-gray-500 rounded-3xl hover:rounded-xl transition-all">
-                <FaCloudUploadAlt size={30} />
-                <span className="text px-1">Upload</span>
+                    className="group flex items-center justify-end px-4 py-2 bg-navBarButtonBackground text-white 
+                    hover:bg-secondary rounded-3xl hover:rounded-xl transition-all">
+                <FaCloudUploadAlt className="group-hover:text-blue-400" size={30} />
+                <span className="text px-2">Upload</span>
             </button>
 
             {/* Show the file upload popup */}
@@ -107,6 +112,23 @@ function UploadButton() {
                 onUpload={handleUploadSuccess} 
                 />
             )}
+        </div>
+    );
+}
+
+function GitHubButton() {  
+    const handleGitHubClick = () => {
+        window.location.href = 'https://github.com';
+    };
+
+    return (
+        <div>
+            <button onClick={handleGitHubClick} 
+                    className="group flex items-center justify-end px-4 py-2 bg-navBarButtonBackground text-white 
+                    hover:bg-secondary rounded-3xl hover:rounded-xl transition-all">
+                <FaGithub className="group-hover:text-blue-400" size={30} />
+                <span className="text px-2">GitHub</span>
+            </button>
         </div>
     );
 }

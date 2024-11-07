@@ -10,8 +10,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#f2f2f2",
-        secondary: "#e9e8e8"
+        primary: "#404258",
+        secondary: "#474E68",
+        mainBackground: "#111827",
+        sideBar: "#1f2937",
+        navBar: "#1f2937",
+        navBarButtonBackground: "#323e4f",
       }
     },
   },
