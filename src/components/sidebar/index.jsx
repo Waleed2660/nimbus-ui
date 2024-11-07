@@ -4,11 +4,13 @@ import { ImBin } from "react-icons/im";
 import { BsGearWideConnected } from "react-icons/bs";
 import { CiLogout } from "react-icons/ci";
 
+import UploadButton from "../uploadFile";
+
 const Sidebar = () => {
   return (
     <div className="fixed top-0 left-0 h-screen pr-5 pl-3 pt-24 pb-2 flex flex-col
                     bg-sideBar text-white space-y-2">
-        
+        <UploadButton />
         <SidebarItem icon={ImFolderOpen} text={"My files"} />
         <SidebarItem icon={ImHistory} text={"Upload History"} />
         <SidebarItem icon={ImBin} text={"Recycle Bin"} />
