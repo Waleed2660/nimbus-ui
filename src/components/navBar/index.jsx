@@ -7,7 +7,7 @@ import nimbusLogo from '../../resources/nimbus_logo.png';
 const NavBar = () => {
     return (
         <nav className="fixed flex items-center w-full h-13 bg-navBar 
-                        text-white shadow-lg z-10">
+                        text-white drop-shadow-2xl z-10">
             <NavbarHeader />
 
             <div className="justify-end flex ml-auto pr-2 space-x-2">
