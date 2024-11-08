@@ -29,7 +29,7 @@ function FileUploadPopup({ onClose, onUpload }) {
 
     return (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <div className="bg-secondary p-8 rounded-lg shadow-lg max-w-sm w-full">
             <h2 className="text-lg mb-4">Upload File</h2>
             <input 
             type="file" 

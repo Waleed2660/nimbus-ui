@@ -1,8 +1,7 @@
-import { ImFolderOpen } from "react-icons/im";
-import { ImHistory } from "react-icons/im";
-import { ImBin } from "react-icons/im";
+import { ImFolderOpen, ImHistory, ImBin, ImStatsDots } from "react-icons/im";
 import { BsGearWideConnected } from "react-icons/bs";
 import { CiLogout } from "react-icons/ci";
+import { IoMdCloudUpload } from "react-icons/io";
 
 import UploadButton from "../uploadFile";
 
@@ -15,11 +14,11 @@ const Sidebar = () => {
         <SidebarItem icon={ImHistory} text={"Upload History"} />
         <SidebarItem icon={ImBin} text={"Recycle Bin"} />
         <div className="flex-grow"></div>
-        {/* <div> */}
+          <SidebarItem icon={ImStatsDots} text={"Bucket Stats"} />
+          <SidebarItem icon={IoMdCloudUpload} text={"Uploads"} />
           <Divider />
           <SidebarItem icon={BsGearWideConnected} text={"Settings"} />
           <SidebarItem icon={CiLogout} text={"Logout"} />
-        {/* </div> */}
     </div>
   );
 };
