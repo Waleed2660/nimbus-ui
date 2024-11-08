@@ -73,7 +73,8 @@ function UploadButton() {
         <div>
             {/* Upload Button */}
             <button onClick={handleShowPopup} 
-                    className="group flex items-center justify-end px-5 py-2 ml-2.5 mb-6 bg-navBarButtonBackground text-white 
+                    className="group flex items-center justify-end px-5 py-2 ml-2.5 mb-6 
+                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] duration-900 text-white 
                     hover:bg-secondary rounded-3xl transition-all border-2 border-gray-600">
                 <FaCloudUploadAlt className="group-hover:text-blue-400" size={30} />
                 <span className="text px-2">Upload File</span>

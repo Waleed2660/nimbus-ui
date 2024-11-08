@@ -5,13 +5,15 @@ import Sidebar from './components/sidebar';
 import FilesPage from './components/files';
 import HistoryPage from './components/history';
 import RecycleBinPage from './components/recycleBin';
+import ServerStatus from './components/backend/serverStatus';
 
 function App() {
   return (
     <div className="flex h-screen">
       <Sidebar />
       <div className="flex flex-col flex-grow">
-        <div className="flex-grow flex overflow-auto pt-6 bg-mainBackground">
+        <div className="flex-grow flex overflow-auto pt-6 w-full h-64 
+        bg-gradient-to-tr from-[#111827] to-[#1e293b] transition-colors duration-300">
           
           {/* Routes */}
           <Routes>
@@ -19,13 +21,16 @@ function App() {
             <Route path="/files" element={<FilesPage />} />
             <Route path="/recycleBin" element={<HistoryPage />} />
             <Route path="/history" element={<RecycleBinPage />} />
-            <Route path="/stats" element={<div>Stats Page</div>} />
-            <Route path="/s3Dashboard" element={<div>S3 Dashboard</div>} />
+            {/* <Route path="/stats" element={<div>Stats Page</div>} /> */}
+            {/* <Route path="/s3Dashboard" element={<div>S3 Dashboard</div>} /> */}
             <Route path="/github" element={<GitHubRedirect />} />
-            <Route path="/settings" element={<div>Settings Page</div>} />
-            <Route path="/logout" element={<div>Logout Page</div>} />
-            <Route path="*" element={<div>404 Not Found</div>} />
+            {/* <Route path="/settings" element={<div>Settings Page</div>} /> */}
+            {/* <Route path="/logout" element={<div>Logout Page</div>} /> */}
           </Routes>
+
+          <div className="absolute bottom-0 right-0">
+            <ServerStatus />
+          </div>
 
         </div>
       </div>
