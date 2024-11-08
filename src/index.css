@@ -5,6 +5,7 @@
 @layer components {
 
   .table-header{
-    @apply px-4 py-2 border-b-2 text-white text-left font-medium
+    @apply px-6 py-3 border-b text-white text-left font-medium text-xs
+            uppercase tracking-wider
   }
 }

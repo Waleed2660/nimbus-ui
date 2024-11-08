@@ -10,7 +10,7 @@ function App() {
       <div className="flex flex-col flex-grow">
         <NavBar />
 
-        <div className="flex-grow flex justify-end items-center bg-mainBackground">
+        <div className="flex-grow flex overflow-auto pt-28 bg-mainBackground">
           <FileContainer />
         </div>
       </div>
