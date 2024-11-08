@@ -18,7 +18,7 @@ const getCurrentTime = () => {
 };
 
 
-const FileContainer = () => {
+const FilesPage = () => {
   const [sortConfig, setSortConfig] = useState({
     key: null,
     direction: 'asc'
@@ -53,7 +53,7 @@ const FileContainer = () => {
   ];
 
   return (
-    <div className="container mx-auto p-5 bg-sideBar rounded-3xl ml-60 mr-11 mb-6
+    <div className="container mx-auto p-2 bg-sideBar rounded-3xl ml-60 mr-6 mb-4
                     flex flex-col max-h-[calc(100vh-2rem)] drop-shadow-2xl">
       <div className="overflow-auto h-full">
         <table className="min-w-full text-gray-600">
@@ -93,7 +93,7 @@ const FileContainer = () => {
       </div>
 
       {/* Footer Div */}
-      <div className="sticky bottom-0 pt-1 w-full border-t border-gray-600">
+      <div className="sticky bottom-0 pt-4 w-full border-t border-gray-600">
           <div className="text-right px-4 py-1 text-gray-500">
             Last Updated: {getCurrentTime()}
           </div>
@@ -103,4 +103,4 @@ const FileContainer = () => {
   );
 };
 
-export default FileContainer;
+export default FilesPage;

@@ -9,12 +9,15 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log("Current path:", location.pathname);
+
   const handleItemClick = (path) => {
+    console.log("Navigating to:", path);
     navigate(path);
   };
 
   return (
-    <div className="fixed h-[calc(100vh-2rem)] overflow-auto p-2 flex flex-col
+    <div className="fixed h-[calc(100vh-2rem)] overflow-auto flex flex-col
                     bg-sideBar text-white space-y-2 drop-shadow-2xl rounded-3xl 
                     ml-4 mt-4">
         <SideBarItems.SidebarHeader />
