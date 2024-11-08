@@ -53,7 +53,7 @@ const FileContainer = () => {
   ];
 
   return (
-    <div className="container mx-auto p-5 bg-sideBar rounded-3xl ml-64 mr-11 mb-10
+    <div className="container mx-auto p-5 bg-sideBar rounded-3xl ml-60 mr-11 mb-6
                     flex flex-col max-h-[calc(100vh-2rem)] drop-shadow-2xl">
       <div className="overflow-auto h-full">
         <table className="min-w-full text-gray-600">
@@ -70,6 +70,8 @@ const FileContainer = () => {
             {data.map((user, index) => (
               <tr key={index} className="group hover:bg-secondary hover:bg-opacity-20 transition-all"
                   onDoubleClick={() => handleRowDoubleClick(user)}>
+                
+                {/* This column handles the text & icon for file */}
                 <td className="px-4 py-3 text-white rounded-l-3xl group-hover:rounded-l-3xl">
                   <div className="flex items-center">
                     {Icons.getPdfIcon()}
@@ -79,6 +81,7 @@ const FileContainer = () => {
                       </button>
                   </div>
                 </td>
+
                 <td className="px-4 py-3 text-white">{user.email}</td>
                 <td className="px-4 py-3 text-white">{user.email}</td>
                 <td className="px-4 py-3 text-white">{user.email}</td>
