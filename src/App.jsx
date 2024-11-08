@@ -8,9 +8,9 @@ function App() {
       <Sidebar />
 
       <div className="flex flex-col flex-grow">
-        <NavBar />
+        {/* <NavBar /> */}
 
-        <div className="flex-grow flex overflow-auto pt-28 bg-mainBackground">
+        <div className="flex-grow flex overflow-auto pt-6 bg-mainBackground">
           <FileContainer />
         </div>
       </div>
