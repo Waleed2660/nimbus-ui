@@ -2,4 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {}
+@layer components {
+
+  .table-header{
+    @apply px-6 py-3 border-b text-white text-left font-medium text-xs
+            uppercase tracking-wider hover:bg-secondary hover:opacity-25;
+  }
+}

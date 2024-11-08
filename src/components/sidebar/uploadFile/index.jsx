@@ -29,7 +29,7 @@ function FileUploadPopup({ onClose, onUpload }) {
 
     return (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <div className="bg-secondary p-8 rounded-lg shadow-lg max-w-sm w-full">
             <h2 className="text-lg mb-4">Upload File</h2>
             <input 
             type="file" 
@@ -73,8 +73,8 @@ function UploadButton() {
         <div>
             {/* Upload Button */}
             <button onClick={handleShowPopup} 
-                    className="group flex items-center justify-end px-6 py-2 bg-navBarButtonBackground text-white 
-                    hover:bg-secondary rounded-3xl hover:rounded-xl transition-all border-2 border-gray-600">
+                    className="group flex items-center justify-end px-5 py-2 ml-2.5 mb-6 bg-navBarButtonBackground text-white 
+                    hover:bg-secondary rounded-3xl transition-all border-2 border-gray-600">
                 <FaCloudUploadAlt className="group-hover:text-blue-400" size={30} />
                 <span className="text px-2">Upload File</span>
             </button>
