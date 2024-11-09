@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as Icons from "./fileTypeIcons";
 import * as Sort from "./sort";
+import { InsertServerStatus } from "../backend/serverStatus";
 
 const handleOpen = (user) => {
   console.log("Opening user:", user);
@@ -33,29 +34,11 @@ const FilesPage = () => {
     { name: "Bob", email: "bob@example.com", role: "User" },
     { name: "Charlie", email: "charlie@example.com", role: "User" },
     { name: "Alice", email: "alice@example.com", role: "Admin" },
-    { name: "Bob", email: "bob@example.com", role: "User" },
-    { name: "Charlie", email: "charlie@example.com", role: "User" },
-    { name: "Alice", email: "alice@example.com", role: "Admin" },
-    { name: "Bob", email: "bob@example.com", role: "User" },
-    { name: "Charlie", email: "charlie@example.com", role: "User" },
-    { name: "Aliceeeeeeeeeeeeeeeeeeeeeeee", email: "alice@example.com", role: "Admin" },
-    { name: "Bob", email: "bob@example.com", role: "User" },
-    { name: "Charlie", email: "charlie@example.com", role: "User" },
-    { name: "Alice", email: "alice@example.com", role: "Admin" },
-    { name: "Bob", email: "bob@example.com", role: "User" },
-    { name: "Charlie", email: "charlie@example.com", role: "User" },
-    { name: "Alice", email: "alice@example.com", role: "Admin" },
-    { name: "Bob", email: "bob@example.com", role: "User" },
-    { name: "Charlie", email: "charlie@example.com", role: "User" },
-    { name: "Alice", email: "alice@example.com", role: "Admin" },
-    { name: "Bob", email: "bob@example.com", role: "User" },
-    { name: "Charlie", email: "charlie@example.com", role: "User" },
   ];
 
   return (
     <div className="container mx-auto p-2 rounded-3xl ml-60 mr-6 mb-4
-                    flex flex-col max-h-[calc(100vh-2rem)] drop-shadow-2xl
-                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] transition-colors duration-900 ">
+                    flex flex-col max-h-[calc(100vh-2rem)] drop-shadow-2xl">
       <div className="overflow-auto h-full">
         <table className="min-w-full text-gray-600">
           <thead>
@@ -95,7 +78,9 @@ const FilesPage = () => {
 
       {/* Footer Div */}
       <div className="sticky bottom-0 pt-4 w-full border-t border-gray-600">
-          <div className="text-right px-4 py-1 text-gray-500">
+          <div className="flex items-center text-right px-4 py-1 text-gray-500">
+            {InsertServerStatus()}
+            <span className="m-2">|</span>
             Last Updated: {getCurrentTime()}
           </div>
       </div>

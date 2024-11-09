@@ -1,25 +1,50 @@
-import { LuWifi } from "react-icons/lu";
-import { LuWifiOff } from "react-icons/lu";
+import { React, useState, useEffect } from 'react';
+import { LuWifi, LuWifiOff } from "react-icons/lu";
 
 const ServerStatus = () => {
-    return (
-        <div>{getHealthCheck()}</div>
-    );
+    // return (
+    //     <div>{getHealthCheck()}</div>
+    // );
 }
 
-const getHealthCheck = () => {
-    fetch('http://localhost:8080/management/healthcheck', { method: 'GET' })
-    .then(response => {
-        if (response.ok) { 
-            return <LuWifi size={20} className="text-green-500" />; 
-        } else {
-            return <LuWifiOff size={20} className="text-red-500" />
-        }
-    })
-    .catch(error => {
-        // Handle network errors or fetch issues
-        console.error('Failed to get HealthCheck:', error);
-    });
+const getHealthCheck = async () => {
+    try {
+        const response = await fetch('http://localhost:8080/management/healthcheck', {
+            method: 'GET'
+        });
+        console.log('Response:', response);
+        return response.status === 200;
+    } catch (error) {
+        console.error('Error checking backend status:', error);
+        return false;
+    }
+}
+
+export const InsertServerStatus = () => {
+    const [isOnline, setIsOnline] = useState(false);
+
+    useEffect(() => {
+        const checkStatus = async () => {
+            const status = await getHealthCheck();
+            setIsOnline(status);
+        };
+        
+        checkStatus();
+        
+        // Optional: Poll status every 30 seconds
+        const interval = setInterval(checkStatus, 30000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="flex items-center space-x-2">
+            <span>Server Status:</span>
+            {isOnline ? 
+                <LuWifi className='text-green-400' /> : 
+                <LuWifiOff className='text-red-400'/>
+            }
+        </div>
+    );
 };
 
 export default ServerStatus;

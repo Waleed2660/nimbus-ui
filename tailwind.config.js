@@ -16,6 +16,9 @@ module.exports = {
         sideBar: "#1f2937",
         navBar: "#1f2937",
         navBarButtonBackground: "#323e4f",
+      },
+      fontFamily: {
+        sans: ['"Segoe UI"'],
       }
     },
   },
