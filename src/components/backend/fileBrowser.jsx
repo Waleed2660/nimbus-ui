@@ -2,21 +2,21 @@ import { type } from '@testing-library/user-event/dist/type';
 import React, { useState, useEffect } from 'react';
 
 const backendUrl = 'http://localhost:8080/s3/bucket';
-const category = 'Main';
-const targetDirectory = '';
+let targetDirectory = '';
 
-const GetDirectoryView = () => {
+const GetDirectoryView = (currentWorkingDirectory) => {
     const [fileData, setFileData] = useState([]);
 
+    targetDirectory = currentWorkingDirectory;
+    console.log('targetDirectory:', targetDirectory);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8080/s3/bucket', 
+                const response = await fetch(backendUrl, 
                     {
                         method: 'GET',
                         headers: {
                         'Accept': 'application/json',
-                        'category': `${category}`,
                         'targetDirectory': `${targetDirectory}`
                         }
                     }
@@ -35,7 +35,7 @@ const GetDirectoryView = () => {
         };
 
         fetchData();
-    }, []);
+    }, [currentWorkingDirectory]);
 
     return fileData;
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { SidebarItem } from "../sidebar/sideBarItem";
 import * as Icons from "./fileTypeIcons";
@@ -9,14 +9,20 @@ import  GetDirectoryView from "../backend/fileBrowser";
 
 let currentWorkingDirectory = "Nimbus/Main/";
 
-const handleOpen = (user) => {
-  console.log("Opening user:", user);
-  // Add logic to open a modal, navigate, or perform another action
+function handleOpen(eachRecord) {
+  if (eachRecord.isFolder === true) {
+    console.log("Opening Folder:", eachRecord);
+    currentWorkingDirectory = currentWorkingDirectory + eachRecord.fileName;
+    FilesPage(currentWorkingDirectory);
+  } 
+  else {
+    console.log("Opening File:", eachRecord);
+    // Add logic to open a modal, navigate, or perform another action
+  }
 };
 
-const handleRowDoubleClick = (user) => {
-  console.log("Double-clicked on user:", user);
-  // Perform the action, such as opening a modal or redirecting
+function handleRowDoubleClick(eachRecord) {
+  handleOpen(eachRecord);
 };
 
 const getCurrentTime = () => {
@@ -30,17 +36,37 @@ const formatFileName = (fileName) => {
 
 const extractWorkingDir = (data) => {
   const index = data.findIndex((element) => element.fileName === currentWorkingDirectory);
-  console.log("Index of current working directory: ", index);
   // Remove the object at the found index
   if (index !== -1) { 
     data.splice(index, 1);
   } 
 }
 
-const FilesPage = () => {
+function FilesPage(pwd) {
+  const [fileData, setFileData] = useState([]);
+  const [currentWorkingDirectory, setCurrentWorkingDirectory] = useState(pwd.pwd);
+  const [loading, setLoading] = useState(false);
 
-  let data = GetDirectoryView();
+  let data = GetDirectoryView(currentWorkingDirectory);
+
   extractWorkingDir(data);
+  // useEffect(() => {
+  //   if (currentWorkingDirectory === null) return;
+
+  //   const fetchFolderContent = async () => {
+  //     try {
+  //       let data = GetDirectoryView(currentWorkingDirectory);
+  //       extractWorkingDir(data);
+
+  //       setFileData(data);
+  //     }
+  //     catch (error) {
+  //       console.error('Error fetching file data:', error);
+  //     }
+  //   };
+
+  //   fetchFolderContent();
+  // }, [currentWorkingDirectory]);
 
   return (
     <div className="container mx-auto rounded-3xl ml-60 mr-6
@@ -59,7 +85,7 @@ const FilesPage = () => {
   );
 };
 
-const RenderTable = (data) => {
+function RenderTable(data) {
   
   const [sortConfig, setSortConfig] = useState({
     key: null,
@@ -128,9 +154,13 @@ function backButton() {
 }
 
 function getCurrentWorkingDirectory() {
+  let pwd;
+  if (currentWorkingDirectory === "Nimbus/Main/") {
+    pwd = "Home/";
+  }
   return (
     <div className="flex items-center justify-start text-right px-2 pt-1 text-gray-500">
-      <span>{currentWorkingDirectory}</span>
+      <span>{pwd}</span>
     </div>
   );
 }
