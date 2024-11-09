@@ -12,7 +12,6 @@ const getHealthCheck = async () => {
         const response = await fetch('http://localhost:8080/management/healthcheck', {
             method: 'GET'
         });
-        console.log('Response:', response);
         return response.status === 200;
     } catch (error) {
         console.error('Error checking backend status:', error);
@@ -38,7 +37,7 @@ export const InsertServerStatus = () => {
 
     return (
         <div className="flex items-center space-x-2">
-            <span>Server Status:</span>
+            <span>Server:</span>
             {isOnline ? 
                 <LuWifi className='text-green-400' /> : 
                 <LuWifiOff className='text-red-400'/>

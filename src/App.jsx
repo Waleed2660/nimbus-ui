@@ -12,7 +12,7 @@ function App() {
     <div className="flex h-screen">
       <Sidebar />
       <div className="flex flex-col flex-grow">
-        <div className="flex-grow flex overflow-auto pt-6 w-full h-64 
+        <div className="flex-grow flex overflow-auto w-full h-64 
         bg-gradient-to-tr from-[#111827] to-[#1e293b] transition-colors duration-300">
           
           {/* Routes */}
