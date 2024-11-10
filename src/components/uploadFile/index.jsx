@@ -20,7 +20,7 @@ function FileUploadPopup({ onClose, onUpload }) {
         // Example:
         const formData = new FormData();
         formData.append('file', file);
-        fetch('http://localhost:8080/upload/file', { method: 'POST', body: formData });
+        fetch('http://localhost:8080/s3/upload/file', { method: 'POST', body: formData });
 
         // After upload is done, close the popup and handle the success logic
         onUpload();
@@ -28,8 +28,8 @@ function FileUploadPopup({ onClose, onUpload }) {
     };
 
     return (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-        <div className="bg-secondary p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center transition-all">
+        <div className="gradient-bg p-8 rounded-lg shadow-lg max-w-sm w-full text-white">
             <h2 className="text-lg mb-4">Upload File</h2>
             <input 
             type="file" 
@@ -55,7 +55,7 @@ function FileUploadPopup({ onClose, onUpload }) {
     );
 }
 
-function UploadButton() {  
+export const UploadButton = () => {  
     const [showPopup, setShowPopup] = useState(false);
 
     // Show the popup when the upload button is clicked
@@ -73,9 +73,10 @@ function UploadButton() {
         <div>
             {/* Upload Button */}
             <button onClick={handleShowPopup} 
-                    className="group flex items-center justify-end px-5 py-2 ml-2.5 mb-6 bg-navBarButtonBackground text-white 
+                    className="group flex items-center justify-end pl-2 py-2 ml-1 mb-1 
+                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] duration-900 text-white text-sm
                     hover:bg-secondary rounded-3xl transition-all border-2 border-gray-600">
-                <FaCloudUploadAlt className="group-hover:text-blue-400" size={30} />
+                <FaCloudUploadAlt className="group-hover:text-blue-400" size={19} />
                 <span className="text px-2">Upload File</span>
             </button>
 
@@ -89,5 +90,3 @@ function UploadButton() {
         </div>
     );
 }
-
-export default UploadButton;
