@@ -11,14 +11,14 @@ export const SidebarItem = ({ icon, text, iconColor, isActive, onClick }) => (
     <div onClick={onClick}
           className={`relative group flex items-center justify-start px-4 py-2 mr-2 ml-2
                      rounded-3xl transition-all
-                      ${isActive ? 'drop-shadow-2xl bg-gradient-to-tr from-[#111827] to-[#1e293b] transition-colors duration-300' : 'hover:bg-secondary'}`}>
+                     ${isActive ? 'drop-shadow-2xl bg-gradient-to-tr from-[#111827] to-[#1e293b] transition-colors duration-300' : 'hover:bg-secondary'}`}>
       <SideBarIcon icon={icon} color={iconColor} isActive={isActive}/>
       <SidebarButton text={text} />
     </div>
   );
   
 const SideBarIcon = ({ icon: Icon, size = 20, color = "text-blue-400", isActive }) => (
-    <div className={`sidebar-icon group-hover:${color} ${isActive ? `${color}` : ''}`
+    <div className={`sidebar-icon group-hover:${color} ${isActive ? `${color}` : ``}`
     }>
       <Icon size={size} />
   </div>

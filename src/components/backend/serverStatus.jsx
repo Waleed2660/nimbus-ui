@@ -31,7 +31,7 @@ export const InsertServerStatus = () => {
         checkStatus();
         
         // Optional: Poll status every 30 seconds
-        const interval = setInterval(checkStatus, 30000);
+        const interval = setInterval(checkStatus, 20000);
         return () => clearInterval(interval);
     }, []);
 

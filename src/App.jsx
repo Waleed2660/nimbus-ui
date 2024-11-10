@@ -17,8 +17,8 @@ function App() {
           
           {/* Routes */}
           <Routes>
-            <Route path="/" element={<FilesPage pwd={"Nimbus/Main/"} />} />
-            <Route path="/files" element={<FilesPage pwd={"Nimbus/Main/"}/>} />
+            <Route path="/" element={<FilesPage pwd={"Nimbus/Main"} />} />
+            <Route path="/files" element={<FilesPage pwd={"Nimbus/Main"}/>} />
             <Route path="/recycleBin" element={<HistoryPage />} />
             <Route path="/history" element={<RecycleBinPage />} />
             {/* <Route path="/stats" element={<div>Stats Page</div>} /> */}

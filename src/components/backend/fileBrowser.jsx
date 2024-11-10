@@ -1,23 +1,26 @@
-const backendUrl = 'http://localhost:8080/s3/bucket';
+const backendUrl = 'http://localhost:8080/s3/bucket/main';
 let targetDirectory = '';
 
-const GetDirectoryView = async (currentWorkingDirectory) => {
+export const GetDirectoryView = async (currentWorkingDirectory) => {
 
     targetDirectory = currentWorkingDirectory;
-
-    const response = await fetch(backendUrl, 
-        {
-            method: 'GET',
-            headers: {
-            'Accept': 'application/json',
-            'targetDirectory': `${targetDirectory}`
+    try {
+        const response = await fetch(backendUrl, 
+            {
+                method: 'GET',
+                headers: {
+                'Accept': 'application/json',
+                'targetDirectory': `${targetDirectory}`
+                }
             }
-        }
-    ); 
-    
-    if (!response.ok) throw new Error(`Error: ${response.status}`);
+        ); 
+        
+        if (!response.ok) throw new Error(`Error: ${response.status}`);
 
-    return response.json();;
+        return response.json();
+    } 
+    catch (error) {
+        console.error('Error fetching content from backend:', error);
+        return [];
+    }
 };
-
-export default GetDirectoryView;

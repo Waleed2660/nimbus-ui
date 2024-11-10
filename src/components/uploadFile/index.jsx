@@ -55,7 +55,7 @@ function FileUploadPopup({ onClose, onUpload }) {
     );
 }
 
-function UploadButton() {  
+export const UploadButton = () => {  
     const [showPopup, setShowPopup] = useState(false);
 
     // Show the popup when the upload button is clicked
@@ -73,10 +73,10 @@ function UploadButton() {
         <div>
             {/* Upload Button */}
             <button onClick={handleShowPopup} 
-                    className="group flex items-center justify-end px-5 py-2 ml-2.5 mb-6 
-                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] duration-900 text-white 
+                    className="group flex items-center justify-end pl-2 py-2 ml-1 mb-1 
+                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] duration-900 text-white text-sm
                     hover:bg-secondary rounded-3xl transition-all border-2 border-gray-600">
-                <FaCloudUploadAlt className="group-hover:text-blue-400" size={30} />
+                <FaCloudUploadAlt className="group-hover:text-blue-400" size={19} />
                 <span className="text px-2">Upload File</span>
             </button>
 
@@ -90,5 +90,3 @@ function UploadButton() {
         </div>
     );
 }
-
-export default UploadButton;

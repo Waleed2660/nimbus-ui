@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import UploadButton from "./uploadFile";
 import * as SideBarItems from "./sideBarItem";
 import { menuItems } from "./sideBarData"
 
@@ -21,8 +19,7 @@ const Sidebar = () => {
                     bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] transition-colors duration-900 
                     ml-4 mt-4">
       <SideBarItems.SidebarHeader />
-      <UploadButton />
-      {menuItems.slice(0, 3).map((item) => (
+      {menuItems.slice(0, 4).map((item) => (
         <SideBarItems.SidebarItem
           key={item.path}
           icon={item.icon}
@@ -33,19 +30,10 @@ const Sidebar = () => {
         />
       ))}
 
-      {menuItems.slice(3, 5).map((item) => (
-        <SideBarItems.SidebarItem
-          key={item.path}
-          icon={item.icon}
-          text={item.text}
-          iconColor={item.iconColor}
-          isActive={location.pathname === item.path}
-          onClick={() => handleItemClick(item.path)}
-        />
-      ))}
       <div className="flex-grow"></div>
+
       <Divider />
-      {menuItems.slice(5).map((item) => (
+      {menuItems.slice(4).map((item) => (
         <SideBarItems.SidebarItem
           key={item.path}
           icon={item.icon}
@@ -60,6 +48,6 @@ const Sidebar = () => {
   );
 };
 
-const Divider = () => <hr className="sidebar-hr shadow-zinc-500 pb-2" />;
+const Divider = () => <hr className="sidebar-hr shadow-zinc-700 pb-2" />;
 
 export default Sidebar;
