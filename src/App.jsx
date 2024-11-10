@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Sidebar from './components/sidebar';
 import FilesPage from './components/files';
-import HistoryPage from './components/history';
+import SearchBar from './components/searchBar';
 import RecycleBinPage from './components/recycleBin';
 import ServerStatus from './components/backend/serverStatus';
 
@@ -12,14 +12,14 @@ function App() {
     <div className="flex h-screen">
       <Sidebar />
       <div className="flex flex-col flex-grow">
-        <div className="gradient-bg flex-grow flex overflow-auto w-full h-64">
+        <div className="gradient-bg flex-grow flex overflow-auto w-full h-64 ">
           
           {/* Routes */}
           <Routes>
             <Route path="/" element={<FilesPage pwd={"Nimbus/Main"} />} />
             <Route path="/files" element={<FilesPage pwd={"Nimbus/Main"}/>} />
-            <Route path="/recycleBin" element={<HistoryPage />} />
-            <Route path="/history" element={<RecycleBinPage />} />
+            <Route path="/fileLookup" element={<SearchBar />} />
+            <Route path="/recycleBin" element={<RecycleBinPage pwd={"Nimbus/Bin"} />} />
             {/* <Route path="/stats" element={<div>Stats Page</div>} /> */}
             {/* <Route path="/s3Dashboard" element={<div>S3 Dashboard</div>} /> */}
             <Route path="/github" element={<GitHubRedirect />} />

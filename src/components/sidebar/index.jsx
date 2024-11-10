@@ -14,12 +14,12 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed h-[calc(100vh-2rem)] overflow-auto flex flex-col
+    <div className="fixed h-[calc(100vh-2rem)] overflow-auto flex flex-col w-16 md:w-48 transition-all
                     bg-sideBar text-white space-y-2 drop-shadow-2xl rounded-3xl border-2 border-[#1f2937]
-                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] transition-colors duration-900 
+                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] duration-900 
                     ml-4 mt-4">
       <SideBarItems.SidebarHeader />
-      {menuItems.slice(0, 4).map((item) => (
+      {menuItems.slice(0, 5).map((item) => (
         <SideBarItems.SidebarItem
           key={item.path}
           icon={item.icon}
@@ -33,7 +33,7 @@ const Sidebar = () => {
       <div className="flex-grow"></div>
 
       <Divider />
-      {menuItems.slice(4).map((item) => (
+      {menuItems.slice(5).map((item) => (
         <SideBarItems.SidebarItem
           key={item.path}
           icon={item.icon}

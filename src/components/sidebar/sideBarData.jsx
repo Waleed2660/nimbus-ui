@@ -1,10 +1,12 @@
-import { ImFolderOpen, ImHistory, ImBin, ImStatsDots } from "react-icons/im";
+import { ImFolderOpen, ImBin, ImStatsDots } from "react-icons/im";
 import { BsGearWideConnected } from "react-icons/bs";
 import { CiLogout } from "react-icons/ci";
 import { FaGithub, FaAws } from "react-icons/fa";
+import { CgSearch } from "react-icons/cg";
 
 export const menuItems = [
     { icon: ImFolderOpen, text: "My files", path: "/files" },
+    { icon: CgSearch, text: "File Lookup", path: "/fileLookup", iconColor: "text-purple-500" },
     { icon: ImBin, text: "Recycle Bin", path: "/recycleBin", iconColor: "text-red-500" },
     { icon: ImStatsDots, text: "Bucket Stats", path: "/stats", iconColor: "text-green-400" },
     { icon: FaAws, text: "S3 Dashboard", path: "/s3Dashboard", iconColor: "text-orange-500" },

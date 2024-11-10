@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LuRefreshCw } from "react-icons/lu";
-import * as Icons from "./fileTypeIcons";
-import * as Sort from "./sort";
 
+import * as Icons from "../utils/fileTypeIcons";
+import * as Sort from "./sort";
 import { UploadButton } from "../uploadFile";
 import { InsertServerStatus } from "../backend/serverStatus";
 import { GetDirectoryView } from "../backend/fileBrowser";
