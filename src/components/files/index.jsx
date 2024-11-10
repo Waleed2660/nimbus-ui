@@ -7,7 +7,7 @@ import * as Sort from "./sort";
 import { UploadButton } from "../uploadFile";
 import { InsertServerStatus } from "../backend/serverStatus";
 import { GetDirectoryView } from "../backend/fileBrowser";
-import { toDisplayPath, toS3Path } from "../utils/pathHandler"
+import { toDisplayPath } from "../utils/pathHandler"
 
 
 let currentWorkingDirectory = "Nimbus/Main";
@@ -61,7 +61,6 @@ function FilesPage(pwd) {
 
     if (eachRecord.isFolder === true) {
       setCurrentWorkingDirectory(currentWorkingDirectory => currentWorkingDirectory + "/" + eachRecord.fileName);
-      console.log("New PWD: " + currentWorkingDirectory + "/" + eachRecord.fileName);
     } 
     else {
       console.log("Opening File:", eachRecord);
@@ -76,11 +75,9 @@ function FilesPage(pwd) {
   // TODO: BUG: Cannot stop the user from going back to the root directory
   const gotoPreviousDirectory = () => {
     if (currentWorkingDirectory === "Nimbus/Main") {
-      console.log("Cannot go back from here");
       return;
     }
   
-    // Nimbus/Main/Wallpapers
     let listDir = currentWorkingDirectory.split("/");
     listDir.pop();
     let newDir = listDir.join("/");

@@ -20,7 +20,7 @@ function FileUploadPopup({ onClose, onUpload }) {
         // Example:
         const formData = new FormData();
         formData.append('file', file);
-        fetch('http://localhost:8080/upload/file', { method: 'POST', body: formData });
+        fetch('http://localhost:8080/s3/upload/file', { method: 'POST', body: formData });
 
         // After upload is done, close the popup and handle the success logic
         onUpload();
@@ -28,8 +28,8 @@ function FileUploadPopup({ onClose, onUpload }) {
     };
 
     return (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-        <div className="bg-secondary p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center transition-all">
+        <div className="gradient-bg p-8 rounded-lg shadow-lg max-w-sm w-full text-white">
             <h2 className="text-lg mb-4">Upload File</h2>
             <input 
             type="file" 
