@@ -3,12 +3,13 @@ import { FaFilePdf, FaFile, FaFileImage, FaFileVideo, FaFileCode, FaFileWord, Fa
 import { FaDatabase } from "react-icons/fa6";
 import { GrDocumentConfig } from "react-icons/gr";
 
-export const getIconBasedOnFileType = (fileName) => {
+export const getIconBasedOnFileType = (eachRecord) => {
   // Handle folders first
-  if (!fileName || fileName.endsWith('/')) {
+  if (eachRecord.isFolder) {
     return getFolderIcon();
   }
 
+  const fileName = eachRecord.fileName;
   const extension = fileName.toLowerCase().split('.').pop();
 
   switch (extension) {
