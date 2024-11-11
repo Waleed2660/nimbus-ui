@@ -1,10 +1,9 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from "react-router-dom";
 
 import * as SideBarItems from "./sideBarItem";
-import { menuItems } from "./sideBarData"
+import { menuItems } from "./sideBarData";
 
 const Sidebar = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -14,10 +13,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed h-[calc(100vh-2rem)] overflow-auto flex flex-col w-16 md:w-48 transition-all
-                    bg-sideBar text-white space-y-2 drop-shadow-2xl rounded-3xl border-2 border-[#1f2937]
-                    bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] duration-900 
-                    ml-4 mt-4">
+    <div className="duration-900 fixed ml-4 mt-4 flex h-[calc(100vh-2rem)] w-16 flex-col space-y-2 overflow-auto rounded-3xl border-2 border-[#1f2937] bg-sideBar bg-gradient-to-tr from-[#1f2937] to-[#2c3b52] text-white drop-shadow-2xl transition-all md:w-48">
       <SideBarItems.SidebarHeader />
       {menuItems.slice(0, 5).map((item) => (
         <SideBarItems.SidebarItem
@@ -48,6 +44,6 @@ const Sidebar = () => {
   );
 };
 
-const Divider = () => <hr className="sidebar-hr shadow-zinc-700 pb-2" />;
+const Divider = () => <hr className="sidebar-hr pb-2 shadow-zinc-700" />;
 
 export default Sidebar;

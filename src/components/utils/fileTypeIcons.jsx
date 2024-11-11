@@ -1,5 +1,16 @@
 import { AiFillFolderOpen } from "react-icons/ai";
-import { FaFilePdf, FaFile, FaFileImage, FaFileVideo, FaFileCode, FaFileWord, FaFileExcel, FaFilePowerpoint, FaFileArchive, FaFileAudio } from "react-icons/fa";
+import {
+  FaFilePdf,
+  FaFile,
+  FaFileImage,
+  FaFileVideo,
+  FaFileCode,
+  FaFileWord,
+  FaFileExcel,
+  FaFilePowerpoint,
+  FaFileArchive,
+  FaFileAudio,
+} from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa6";
 import { GrDocumentConfig } from "react-icons/gr";
 
@@ -10,96 +21,96 @@ export const getIconBasedOnFileType = (eachRecord) => {
   }
 
   const fileName = eachRecord.fileName;
-  const extension = fileName.toLowerCase().split('.').pop();
+  const extension = fileName.toLowerCase().split(".").pop();
 
   switch (extension) {
     // Documents
-    case 'pdf':
+    case "pdf":
       return getPdfIcon();
-    case 'doc':
-    case 'docx':
-    case 'rtf':
-    case 'odt':
+    case "doc":
+    case "docx":
+    case "rtf":
+    case "odt":
       return getWordIcon();
-    case 'xls':
-    case 'xlsx':
-    case 'csv':
+    case "xls":
+    case "xlsx":
+    case "csv":
       return getExcelIcon();
-    case 'ppt':
-    case 'pptx':
+    case "ppt":
+    case "pptx":
       return getPowerpointIcon();
 
     // Images
-    case 'jpg':
-    case 'jpeg':
-    case 'png':
-    case 'gif':
-    case 'bmp':
-    case 'svg':
-    case 'webp':
-    case 'tiff':
+    case "jpg":
+    case "jpeg":
+    case "png":
+    case "gif":
+    case "bmp":
+    case "svg":
+    case "webp":
+    case "tiff":
       return getImageIcon();
 
     // Videos
-    case 'mp4':
-    case 'avi':
-    case 'mov':
-    case 'wmv':
-    case 'flv':
-    case 'mkv':
-    case 'webm':
+    case "mp4":
+    case "avi":
+    case "mov":
+    case "wmv":
+    case "flv":
+    case "mkv":
+    case "webm":
       return getVideoIcon();
 
     // Audio
-    case 'mp3':
-    case 'wav':
-    case 'ogg':
-    case 'm4a':
-    case 'flac':
-    case 'aac':
+    case "mp3":
+    case "wav":
+    case "ogg":
+    case "m4a":
+    case "flac":
+    case "aac":
       return getAudioIcon();
 
     // Archives
-    case 'zip':
-    case 'rar':
-    case '7z':
-    case 'tar':
-    case 'gz':
-    case 'bz2':
+    case "zip":
+    case "rar":
+    case "7z":
+    case "tar":
+    case "gz":
+    case "bz2":
       return getArchiveIcon();
 
     // Code files
-    case 'html':
-    case 'css':
-    case 'js':
-    case 'jsx':
-    case 'ts':
-    case 'tsx':
-    case 'json':
-    case 'xml':
-    case 'py':
-    case 'java':
-    case 'cpp':
-    case 'c':
-    case 'cs':
-    case 'php':
-    case 'rb':
-    case 'sql':
-    case 'yaml':
-    case 'yml':
+    case "html":
+    case "css":
+    case "js":
+    case "jsx":
+    case "ts":
+    case "tsx":
+    case "json":
+    case "xml":
+    case "py":
+    case "java":
+    case "cpp":
+    case "c":
+    case "cs":
+    case "php":
+    case "rb":
+    case "sql":
+    case "yaml":
+    case "yml":
       return getCodeIcon();
 
     // Database files
-    case 'db':
-    case 'sqlite':
-    case 'mdb':
+    case "db":
+    case "sqlite":
+    case "mdb":
       return getDatabaseIcon();
 
     // Config files
-    case 'env':
-    case 'config':
-    case 'ini':
-    case 'cfg':
+    case "env":
+    case "config":
+    case "ini":
+    case "cfg":
       return getConfigIcon();
 
     // Default
@@ -118,7 +129,7 @@ export const getDatabaseIcon = () => {
 
 export const getConfigIcon = () => {
   return <GrDocumentConfig className="mr-2 text-green-400" size={25} />;
-}
+};
 
 export const getPdfIcon = () => {
   return <FaFilePdf className="mr-2 text-red-400" size={25} />;

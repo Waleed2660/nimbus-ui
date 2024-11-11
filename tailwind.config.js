@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  mode: "jit",
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
-  darkMode: 'dark',
+  darkMode: "dark",
   theme: {
     extend: {
       colors: {
@@ -19,9 +19,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['"Segoe UI"'],
-      }
+      },
     },
   },
   plugins: [],
-}
-
+};

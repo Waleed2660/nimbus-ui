@@ -1,25 +1,27 @@
-import { React, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { React, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Sidebar from './components/sidebar';
-import FilesPage from './components/files';
-import SearchBar from './components/searchBar';
-import RecycleBinPage from './components/recycleBin';
-import ServerStatus from './components/backend/serverStatus';
+import Sidebar from "./components/sidebar";
+import FilesPage from "./components/files";
+import SearchBar from "./components/searchBar";
+import RecycleBinPage from "./components/recycleBin";
+import ServerStatus from "./components/backend/serverStatus";
 
 function App() {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <div className="flex flex-col flex-grow">
-        <div className="gradient-bg flex-grow flex overflow-auto w-full h-64 ">
-          
+      <div className="flex flex-grow flex-col">
+        <div className="gradient-bg flex h-64 w-full flex-grow overflow-auto">
           {/* Routes */}
           <Routes>
             <Route path="/" element={<FilesPage pwd={"Nimbus/Main"} />} />
-            <Route path="/files" element={<FilesPage pwd={"Nimbus/Main"}/>} />
+            <Route path="/files" element={<FilesPage pwd={"Nimbus/Main"} />} />
             <Route path="/fileLookup" element={<SearchBar />} />
-            <Route path="/recycleBin" element={<RecycleBinPage pwd={"Nimbus/Bin"} />} />
+            <Route
+              path="/recycleBin"
+              element={<RecycleBinPage pwd={"Nimbus/Bin"} />}
+            />
             {/* <Route path="/stats" element={<div>Stats Page</div>} /> */}
             {/* <Route path="/s3Dashboard" element={<div>S3 Dashboard</div>} /> */}
             <Route path="/github" element={<GitHubRedirect />} />
@@ -30,7 +32,6 @@ function App() {
           <div className="absolute bottom-0 right-0">
             <ServerStatus />
           </div>
-
         </div>
       </div>
     </div>
@@ -39,7 +40,7 @@ function App() {
 
 const GitHubRedirect = () => {
   useEffect(() => {
-    window.location.href = 'https://github.com/Waleed2660/nimbus-ui';
+    window.location.href = "https://github.com/Waleed2660/nimbus-ui";
   }, []);
   return <div>Redirecting to GitHub...</div>;
 };

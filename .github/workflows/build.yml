@@ -3,9 +3,9 @@ name: Build React Project
 # Trigger the workflow on push or pull request events on all branches
 on:
   push:
-    branches: ['*']  # Triggers on all branches
+    branches: ["*"] # Triggers on all branches
   pull_request:
-    branches: ['*']  # Runs on all branches for PRs
+    branches: ["*"] # Runs on all branches for PRs
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '23'
+          node-version: "23"
 
       # Install dependencies
       - name: Install dependencies
