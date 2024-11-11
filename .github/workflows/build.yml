@@ -1,31 +1,39 @@
-name: Build React Project
-
-# Trigger the workflow on push or pull request events on all branches
+name: Deploy to EC2
 on:
   push:
-    branches: ['*']  # Triggers on all branches
-  pull_request:
-    branches: ['*']  # Runs on all branches for PRs
+    branches: [ main ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # Check out the repository code
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Set up Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '23'
-
-      # Install dependencies
+          node-version: '20'
+          
       - name: Install dependencies
         run: npm install
-
-      # Run the build command
-      - name: Build the project
+        
+      - name: Build application
         run: npm run build
+        
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          
+      - name: Deploy to EC2
+        env:
+          PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          HOST: ${{ secrets.EC2_HOST }}
+          USER: ${{ secrets.EC2_USER }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          scp -i private_key.pem -o StrictHostKeyChecking=no -r build/* $USER@$HOST:/var/www/html/
+          rm -f private_key.pem
