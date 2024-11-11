@@ -1,6 +1,7 @@
 const backendUrl = 'http://localhost:8080/s3/bucket/list';
 
 export const grabListofAllFiles = async () => {
+    console.log('grabListofAllFiles');
     try {
         const response = await fetch(backendUrl, 
             {
