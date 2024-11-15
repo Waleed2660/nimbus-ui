@@ -11,24 +11,6 @@ import { toDisplayPath } from "../utils/pathHandler";
 
 let currentWorkingDirectory = "Nimbus/Main";
 
-const getCurrentTime = () => {
-  const date = new Date();
-  return date.toLocaleString();
-};
-
-const formatFileName = (fileName) => {
-  return fileName.replace(/^Nimbus\/Main\//, "");
-};
-
-const removeWorkingDirFromList = (data) => {
-  const index = data.findIndex((element) =>
-    element.fileName.includes(currentWorkingDirectory),
-  );
-  if (index !== -1) {
-    data.splice(index, 1);
-  }
-};
-
 function FilesPage(pwd) {
   const [fileData, setFileData] = useState([]);
   const [currentWorkingDirectory, setCurrentWorkingDirectory] = useState(
@@ -85,6 +67,21 @@ function FilesPage(pwd) {
     listDir.pop();
     let newDir = listDir.join("/");
     setCurrentWorkingDirectory(newDir);
+  };
+  
+  const formatFileName = (fileName) => {
+    if (!loading) {
+      return fileName.replace(currentWorkingDirectory + "/", "");
+    }
+  };
+  
+  const removeWorkingDirFromList = (data) => {
+    const index = data.findIndex((element) =>
+      element.fileName.includes(currentWorkingDirectory),
+    );
+    if (index !== -1) {
+      data.splice(index, 1);
+    }
   };
 
   const renderBackButton = () => {
@@ -260,6 +257,11 @@ function getFooter(data) {
     </div>
   );
 }
+
+const getCurrentTime = () => {
+  const date = new Date();
+  return date.toLocaleString();
+};
 
 // Not being used in the current implementation
 // const getFloatingAlert = () => {
