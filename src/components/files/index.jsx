@@ -118,19 +118,18 @@ function FilesPage(pwd) {
     );
   };
 
-  const getHeader = (data) => {
+  const getHeader = () => {
     return (
       <div className="sticky top-0 pb-1 pt-1">
         <div
-          className="flex items-center justify-start space-x-3 pt-1 text-gray-500 hover:bg-none"
-          // onClick={gotoPreviousDirectory()}
-        >
+          className="flex items-center justify-start space-x-3 pt-1 text-gray-500 hover:bg-none">
           {renderBackButton()}
           {renderRefreshButton()}
           {renderDisplayDirectory()}
 
           <div className="flex-grow"></div>
-          <UploadButton />
+          {console.log("Current Working Directory STRING: ", currentWorkingDirectory)}
+          <UploadButton currentWorkingDirectory={currentWorkingDirectory}/>
         </div>
       </div>
     );
@@ -144,7 +143,7 @@ function FilesPage(pwd) {
   return (
     <div className="container mx-auto ml-60 mr-6 flex flex-col rounded-3xl">
       {/* Renders Header */}
-      {getHeader(fileData)}
+      {getHeader()}
 
       <div className="h-full overflow-auto">
         <table className="min-w-full text-gray-600">
@@ -213,10 +212,10 @@ function FilesPage(pwd) {
 
 const displayLoadingAnimation = () => {
   return (
-    <div class="ml-80 flex min-h-screen w-full items-center justify-center">
+    <div className="ml-80 flex min-h-screen w-full items-center justify-center">
       <svg
         aria-hidden="true"
-        class="h-10 w-10 animate-spin fill-green-600"
+        className="h-10 w-10 animate-spin fill-green-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +229,7 @@ const displayLoadingAnimation = () => {
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span className="sr-only">Loading...</span>
     </div>
   );
 };

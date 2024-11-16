@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { pushFileToS3 } from "../backend/fileUpload";
 
-function FileUploadPopup({ onClose, onUpload }) {
+function FileUploadPopup({ onClose, onUpload, currentWorkingDirectory }) {
   const [file, setFile] = useState(null);
 
   // Handle file change (any type of file can be selected)
@@ -9,21 +10,10 @@ function FileUploadPopup({ onClose, onUpload }) {
     setFile(event.target.files[0]);
   };
 
-  // Handle file upload logic (sending the file to backend or just logging it)
   const handleUpload = () => {
     if (!file) return;
 
-    // For now, just log the file details. You can implement the actual upload logic here.
-    console.log("File selected:", file);
-
-    // Optionally, trigger file upload (sending to backend via fetch or axios)
-    // Example:
-    const formData = new FormData();
-    formData.append("file", file);
-    fetch("http://localhost:8080/s3/upload/file", {
-      method: "POST",
-      body: formData,
-    });
+    pushFileToS3(file, currentWorkingDirectory.toString());
 
     // After upload is done, close the popup and handle the success logic
     onUpload();
@@ -58,7 +48,8 @@ function FileUploadPopup({ onClose, onUpload }) {
   );
 }
 
-export const UploadButton = () => {
+export const UploadButton = ( currentWorkingDirectory ) => {
+
   const [showPopup, setShowPopup] = useState(false);
 
   // Show the popup when the upload button is clicked
@@ -88,6 +79,7 @@ export const UploadButton = () => {
         <FileUploadPopup
           onClose={handleClosePopup}
           onUpload={handleUploadSuccess}
+          currentWorkingDirectory={currentWorkingDirectory.currentWorkingDirectory}
         />
       )}
     </div>
