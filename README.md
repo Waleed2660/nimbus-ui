@@ -3,6 +3,8 @@
 ## 📋 Overview
 Nimbus is a intuitive web application for personal cloud storage, built with modern web technologies to provide a seamless file management experience. This app communicates with a backend application developed with Java Springboot to handle all sort of communication with Amazon S3 Bucket to view, upload, navigate & delete files.
 
+![Dashboard](/src/resources/Nimbus-Dashboard.png)
+
 ## 🚀 Features
 - File upload and storage
 - Navigate Directories
@@ -18,11 +20,6 @@ Nimbus is a intuitive web application for personal cloud storage, built with mod
 - **Frontend**: React.js
 - **Styling**: TailwindCSS
 - **Language**: JavaScript
-
-## 🖥️ Screenshots
-
-### Dashboard View
-![Dashboard](/screenshots/dashboard.png)
 
 ## 🛠️ Prerequisites
 - Node.js (v18.0.0+)
