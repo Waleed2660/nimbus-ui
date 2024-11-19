@@ -11,24 +11,6 @@ import { toDisplayPath } from "../utils/pathHandler";
 
 let currentWorkingDirectory = "Nimbus/Main";
 
-const getCurrentTime = () => {
-  const date = new Date();
-  return date.toLocaleString();
-};
-
-const formatFileName = (fileName) => {
-  return fileName.replace(/^Nimbus\/Main\//, "");
-};
-
-const removeWorkingDirFromList = (data) => {
-  const index = data.findIndex((element) =>
-    element.fileName.includes(currentWorkingDirectory),
-  );
-  if (index !== -1) {
-    data.splice(index, 1);
-  }
-};
-
 function FilesPage(pwd) {
   const [fileData, setFileData] = useState([]);
   const [currentWorkingDirectory, setCurrentWorkingDirectory] = useState(
@@ -86,6 +68,21 @@ function FilesPage(pwd) {
     let newDir = listDir.join("/");
     setCurrentWorkingDirectory(newDir);
   };
+  
+  const formatFileName = (fileName) => {
+    if (!loading) {
+      return fileName.replace(currentWorkingDirectory + "/", "");
+    }
+  };
+  
+  const removeWorkingDirFromList = (data) => {
+    const index = data.findIndex((element) =>
+      element.fileName.includes(currentWorkingDirectory),
+    );
+    if (index !== -1) {
+      data.splice(index, 1);
+    }
+  };
 
   const renderBackButton = () => {
     return (
@@ -121,19 +118,18 @@ function FilesPage(pwd) {
     );
   };
 
-  const getHeader = (data) => {
+  const getHeader = () => {
     return (
       <div className="sticky top-0 pb-1 pt-1">
         <div
-          className="flex items-center justify-start space-x-3 pt-1 text-gray-500 hover:bg-none"
-          // onClick={gotoPreviousDirectory()}
-        >
+          className="flex items-center justify-start space-x-3 pt-1 text-gray-500 hover:bg-none">
           {renderBackButton()}
           {renderRefreshButton()}
           {renderDisplayDirectory()}
 
           <div className="flex-grow"></div>
-          <UploadButton />
+          {console.log("Current Working Directory STRING: ", currentWorkingDirectory)}
+          <UploadButton currentWorkingDirectory={currentWorkingDirectory}/>
         </div>
       </div>
     );
@@ -147,7 +143,7 @@ function FilesPage(pwd) {
   return (
     <div className="container mx-auto ml-60 mr-6 flex flex-col rounded-3xl">
       {/* Renders Header */}
-      {getHeader(fileData)}
+      {getHeader()}
 
       <div className="h-full overflow-auto">
         <table className="min-w-full text-gray-600">
@@ -216,10 +212,10 @@ function FilesPage(pwd) {
 
 const displayLoadingAnimation = () => {
   return (
-    <div class="ml-80 flex min-h-screen w-full items-center justify-center">
+    <div className="ml-80 flex min-h-screen w-full items-center justify-center">
       <svg
         aria-hidden="true"
-        class="h-10 w-10 animate-spin fill-green-600"
+        className="h-10 w-10 animate-spin fill-green-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -233,7 +229,7 @@ const displayLoadingAnimation = () => {
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span className="sr-only">Loading...</span>
     </div>
   );
 };
@@ -260,6 +256,11 @@ function getFooter(data) {
     </div>
   );
 }
+
+const getCurrentTime = () => {
+  const date = new Date();
+  return date.toLocaleString();
+};
 
 // Not being used in the current implementation
 // const getFloatingAlert = () => {

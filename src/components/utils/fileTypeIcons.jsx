@@ -11,6 +11,8 @@ import {
   FaFileArchive,
   FaFileAudio,
 } from "react-icons/fa";
+import { ImWindows } from "react-icons/im";
+import { PiNotepadBold } from "react-icons/pi";
 import { FaDatabase } from "react-icons/fa6";
 import { GrDocumentConfig } from "react-icons/gr";
 
@@ -113,10 +115,24 @@ export const getIconBasedOnFileType = (eachRecord) => {
     case "cfg":
       return getConfigIcon();
 
+    case "exe":
+      return getWindowsExeceutableIcon();
+
+    case "txt":
+      return getTextFileIcon();
+
     // Default
     default:
       return getDefaultFileIcon();
   }
+};
+
+const getTextFileIcon = () => {
+  return <PiNotepadBold className="mr-2 text-yellow-400" size={25} />;
+};
+
+const getWindowsExeceutableIcon = () => {
+  return <ImWindows className="mr-2 text-blue-400" size={25} />;
 };
 
 export const getFolderIcon = () => {
@@ -170,7 +186,7 @@ export const getPowerpointIcon = () => {
 
 // Icon for archive files (e.g., .zip, .rar, etc.)
 export const getArchiveIcon = () => {
-  return <FaFileArchive className="mr-2 text-yellow-500" size={25} />;
+  return <FaFileArchive className="mr-2 text-orange-500" size={25} />;
 };
 
 // Icon for audio files (e.g., .mp3, .wav)
